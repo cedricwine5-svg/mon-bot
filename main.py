@@ -45,14 +45,8 @@ def authenticate_user(user_id):
 # =================COMMANDES ET AUTHENTIFICATION=================
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    user_id = message.from_user.id
-    if is_authenticated(user_id):
-        show_main_menu(message.chat.id)
-    else:
-        bot.send_message(
-            message.chat.id, 
-            "Accès Sécurisé - Veuillez entrer le mot de passe pour accéder au bot :"
-        )
+    authenticate_user(message.from_user.id)
+    show_main_menu(message.chat.id)
 
 @bot.message_handler(func=lambda message: not is_authenticated(message.from_user.id))
 def handle_password(message):
