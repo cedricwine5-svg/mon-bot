@@ -11,7 +11,7 @@ API_FOOTBALL_KEY = "4ba45f1c6e5db21bddfaa626de883aea"
 ACCESS_PASSWORD = "2004"
 
 bot = telebot.TeleBot(TOKEN)
-
+bot.remove_webhook()
 # =================GESTION BASE DE DONNÉES SQLITE=================
 def init_db():
     conn = sqlite3.connect('bot_database.db')
